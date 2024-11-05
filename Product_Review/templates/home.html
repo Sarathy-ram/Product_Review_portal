@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="../static/css/home.css">
+</head>
+<body>  
+    <div id="sidebar" class="sidebar">
+        <h2>BIT Student Dashboard</h2>
+        <h2>Resources</h2>
+        <a href="{% url 'product_register' %}">Product Register &#9654;</a>
+        <a href="{% url 'product_update' %}">Product Update &#9654;</a>
+        <a href="{% static 'files/about.pdf' %}" target="_blank">About &#9654;</a>
+    </div>
+    <div id="main-content" class="content">
+        <button class="toggle-btn">&#9654;</button>
+        <div class="welcome-container">
+            <h1 class="welcome-title">Welcome to BIT Product Portal, {{ user.username }}!</h1>
+            <p class="welcome-subtitle">We're glad to have you back.</p>
+        </div>
+    
+        <!-- Dashboard containers for Submitted, Accepted, Rejected, and Remarks -->
+        <div class="dashboard-container">
+            <div class="dashboard-card submitted-projects">
+                <h3>Submitted Projects</h3>
+                <p>{{ submitted_projects }}</p>
+            </div>
+            <div class="dashboard-card accepted-projects">
+                <h3>Accepted Projects</h3>
+                <p>{{ accepted_projects }}</p>
+            </div>
+            <div class="dashboard-card rejected-projects">
+                <h3>Rejected Projects</h3>
+                <p>{{ rejected_projects }}</p>
+            </div>
+            <div class="dashboard-card remarks">
+                <h3>Remarks</h3>
+                {% if first_review_remarks %}
+                    <ul>
+                        {% for remark in first_review_remarks %}
+                            <li>{{ remark }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>None</p>
+                {% endif %}
+            </div>
+        </div>
+    
+        <!-- Product Grid -->
+        <div class="product-grid">
+            {% for product in products %}
+                <div class="product-card" data-product-id="{{ product.id }}">
+                    <h3>{{ product.name }}</h3>
+                    <p><strong>Roll No:</strong> {{ product.roll_no }}</p>
+                    <p><strong>Special Lab:</strong> {{ product.special_lab }}</p>
+                    <p><strong>Project Guide:</strong> {{ product.project_guide }}</p>
+                    <p><strong>Project Title:</strong> {{ product.Project_Title }}</p>
+                    <p><strong>Product Status:</strong>{{ product.project_status }}</p>
+                    <p><strong>Abstract:</strong> {{ product.abstract|truncatewords:30 }}</p>
+                    <span class="status {{ product.status }}">{{ product.status|title }}</span>
+                    <p class="mentor-name {% if not product.allocated_mentor %}hidden{% endif %}">
+                       Allocated mentor: {{ product.allocated_mentor }}
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+    
+    </div>
+    
+    <footer>
+        <p>Sarathy Ram | Bannari Amman Institute Of Technology | Copyrights &copy; 2024</p>
+    </footer>
+
+    <script src="{% static 'js/homescript.js' %}"></script>
+</body>
+</html>

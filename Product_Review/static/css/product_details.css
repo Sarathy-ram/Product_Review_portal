@@ -1,0 +1,142 @@
+/* product_details.css */
+body {
+    font-family: 'Poppins', sans-serif;
+   background-image: url('../images/image3.png');
+   background-size:cover ;
+   background-repeat: no-repeat;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    color: #333;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+.product-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+    color: #007bff;
+}
+
+.product-card p {
+    margin: 0 0 10px;
+    line-height: 1.6;
+}
+
+.product-card .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.product-card .btn:hover {
+    background-color: #0056b3;
+}
+
+.product-card .status {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+.product-card .status.submitted {
+    background-color: #ffc107;
+}
+
+.product-card .status.accepted {
+    background-color: #28a745;
+}
+
+.product-card .status.rejected {
+    background-color: #dc3545;
+}
+.mentor-btn {
+    margin-top: 10px;
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.mentor-btn:hover {
+    background-color: #138496;
+}
+
+.mentor-name {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+.hidden {
+    display: none;
+}
+.icon-btn {
+    background-color: #2C3E50; /* Dark, modern background */
+    color: #ECF0F1; /* Light color for icon */
+    border: none;
+    border-radius: 50%; /* Rounded icon button */
+    padding: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Adding a subtle hover effect */
+.icon-btn:hover {
+    background-color: #34495E; /* Slightly lighter shade on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+    transform: translateY(-3px); /* Slight upward movement on hover */
+}
+
+.icon-btn:active {
+    transform: translateY(0); /* Reset movement on click */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Slightly reduce shadow on click */
+}
+
+/* Icon styling */
+.icon-btn i {
+    margin: 0;
+    transition: transform 0.3s ease; /* Icon transition for hover effect */
+}
+
+/* Adding rotation animation to the icon on hover */
+.icon-btn:hover i {
+    transform: rotate(20deg); /* Slight rotation on hover */
+}

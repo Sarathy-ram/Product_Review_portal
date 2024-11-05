@@ -1,0 +1,66 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/product_register.css' %}">
+</head>
+<body>
+    <div>
+        <a href="{% url 'home' %}">
+            <button class="icon-btn">
+                <i class="fas fa-home"></i>
+            </button>
+        </a>
+    </div>
+    <div class="form-container">
+        <h2>Product Registration</h2>
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_name">Team Lead Name</label>
+                {{ form.name }}
+            </div>
+            <div class="form-group">
+                <label for="id_roll_no">Team Lead Roll No</label>
+                {{ form.roll_no }}
+            </div>
+            <div class="form-group">
+                <label for="id_special_lab">Special Lab</label>
+                {{ form.special_lab }}
+            </div>
+            <div class="form-group">
+                <label for="id_special_lab">Project_Title</label>
+                {{ form.Project_Title }}
+            </div>
+            <div class="form-group">
+                <label for="id_project_guide">Project Guide</label>
+                {{ form.project_guide }}
+            </div>
+            <div class="form-group">
+                <label for="id_abstract">Abstract</label>
+                {{ form.abstract }}
+            </div>
+            <div class="form-group">
+                <label for="id_bom_submission">BOM Submission (PDF)</label>
+                {{ form.bom_submission }}
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+

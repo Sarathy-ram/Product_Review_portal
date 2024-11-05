@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/product_details.css' %}">
+</head>
+<body>
+    <div>
+        <a href="{% url 'admin_home' %}">
+            <button class="icon-btn">
+                <i class="fas fa-home"></i>
+            </button>
+        </a>
+    </div>
+    <div class="container">
+        <h1>Product Details</h1>
+        <div class="product-grid">
+            {% for product in products %}
+            <div class="product-card" data-product-id="{{ product.id }}">
+                <h3>{{ product.name }}</h3>
+                <p><strong>Roll No:</strong> {{ product.roll_no }}</p>
+                <p><strong>Special Lab:</strong> {{ product.special_lab }}</p>
+                <p><strong>Project Guide:</strong> {{ product.project_guide }}</p>
+                <p><strong>Project Title</Title>:</strong> {{ product.Project_Title}}</p>
+                <p><strong>Product Status:</strong>{{product.project_status}}</p>
+                <p><strong>Abstract:</strong> {{ product.abstract|truncatewords:30 }}</p>
+                <a href="{{ product.bom_submission.url }}" target="_blank" class="btn">View BOM</a>
+                
+                <!-- Allocate Mentor Button -->
+                <button class="btn mentor-btn" onclick="allocateMentor(this)">Allocate Mentor</button>
+                <p class="mentor-name {% if not product.allocated_mentor %}hidden{% endif %}">
+                    {{ product.allocated_mentor }}
+                </p>
+
+                <span class="status {{ product.status }}">{{ product.status|title }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="{% static 'js/mentor.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2eded; /* Light purple background */
+    margin: 0;
+    padding: 0;
+    
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Dashboard Styles */
+.dashboard-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.dashboard-card {
+
+    background: linear-gradient(135deg, #505153, #57595a);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    margin: 10px;
+    transition: transform 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+.dashboard-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-family: 'Arial Black', sans-serif; /* Example font change */
+}
+
+.dashboard-card p {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-btn {
+    position: fixed;
+    top: 5px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 12;
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.dark-mode .dashboard-card {
+    background: linear-gradient(135deg, #255574, #6754aa);
+}
+.dark-mode .welcome-container{
+    background-color: #0c0000;
+    color: #e9e0e0;
+    background-image: url('../images/download.png');
+    background-size:contain;
+    background-repeat: no-repeat;
+}
+
+/* Existing Styles */
+/* ... your existing CSS ... */
+
+/* Welcome Message Styles */
+.welcome-container {
+    background-color: white;
+    color: #120101;
+    padding: 40px;
+    border-radius: 10px;
+    background-image: url('../images/image2.png');
+    background-size:contain;
+    background-repeat: no-repeat;
+    
+    margin: 20px;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.welcome-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.welcome-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 0;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .welcome-container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .welcome-title {
+        font-size: 28px;
+    }
+    
+    .welcome-subtitle {
+        font-size: 16px;
+    }
+}
+
+/* Centered Background Image */
+.centered-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: auto;
+    opacity: 0.1; /* Adjust transparency */
+    z-index: 1; /* Positioned behind the content */
+}
+
+/* Sidebar */
+#sidebar {
+    width: 0;
+    height: 100%;
+    background-color: #565656;
+    overflow-x: hidden;
+    transition: 0.3s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 60px;
+    padding-left: 15px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+}
+
+#sidebar h2 {
+    color: white;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+#sidebar a {
+    padding: 8px 10px;
+    text-decoration: none;
+    font-size: 13px;
+   background-image: image('C:\Users\M SarathiRam\OneDrive\Desktop\Product_Review\Product_Review\static\images\image.png');
+    color: #111012;
+    display:grid ;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #a09c9c;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#sidebar a:hover {
+    background-color: #f4f1f7;
+}
+
+#sidebar a span {
+    font-size: 10px;
+    margin-left: 20px;
+}
+
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0.001px; /* Reduced padding for smaller height */
+    background-color: rgba(17, 1, 1, 0.211);
+    font-size: 12px;
+    font-weight: bold; /* Bold letters */
+}
+
+/* Toggle button */
+.toggle-btn {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    font-size: 10px;
+    background-color: #07010f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 11; /* Ensure it's on top of other elements */
+}
+
+#main-content {
+    transition: margin-left 0.3s;
+    padding: 20px;
+    margin-left: 0;
+}
+
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    margin-left: 15cm;
+    gap: 20px;
+}
+
+.dark-mode .product-card{
+    background-color: #1a1919;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+
+
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+.product-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+    color: #007bff;
+}
+
+.product-card p {
+    margin: 0 0 10px;
+    line-height: 1.6;
+}
+
+.product-card .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.product-card .btn:hover {
+    background-color: #0056b3;
+}
+
+.product-card .status {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #0f0e0e;
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+.product-card .status.submitted {
+    background-color: #ffc107;
+}
+
+.product-card .status.accepted {
+    background-color: #28a745;
+}
+
+.product-card .status.rejected {
+    background-color: #dc3545;
+}
+.mentor-btn {
+    margin-top: 10px;
+    background-color: #17a2b8;
+    color: #110b0b;
+}
+
+.mentor-btn:hover {
+    background-color: #138496;
+}
+
+.mentor-name {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+.dark-mode .mentor-name{
+    margin-top: 10px;
+    font-weight: bold;
+    color: #e5e1e1;
+}
+.hidden {
+    display: none;
+}

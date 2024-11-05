@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'css/admin_home.css' %}">
+</head>
+<body>
+    <!-- Background Image -->
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <h2>BIT Faculty Panel</h2>
+        <h2>Resources</h2>
+        <a href="{% url 'Problem statementapproval' %}" class="btn">Problem Statement Approval &#9654;</a>
+        <a href="{% url 'product_details' %}">Student Product Details &#9654;</a>
+        <a href="{% url 'product_update' %}">Student Product Update &#9654;</a>
+    </div>
+    <!-- Footer -->
+    <button class="toggle-btn" id="toggle-btn">&#9654</button>
+    
+    <footer>
+        <p>Sarathy Ram | Bannari Amman Institute Of Technology | Copyrights &copy; 2024</p>
+    </footer>
+
+    <script src="{% static 'js/admin_home.js' %}"></script>
+</body>
+</html>
