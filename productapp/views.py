@@ -40,12 +40,14 @@ def admin_home(request):
     total_accepted = ProductRegister.objects.filter(project_status='Approved').count()
     total_rejected = ProductRegister.objects.filter(project_status='Rejected').count()
     total_pending = ProductRegister.objects.filter(project_status='Pending').count()
+    submissions = ProductRegister.objects.all()[:5]
     context = {
         'username': request.user.username,
         'total_applied': total_applied or 'None',
         'total_accepted': total_accepted or 'None',
         'total_rejected': total_rejected or 'None',
         'total_pending': total_pending or 'None',
+        'submissions': submissions,
         
     }
     return render(request, 'admin_home.html',context)

@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
         data: {
             labels: ['Total Applied', 'Total Accepted'],
             datasets: [{
-                label: 'Applied vs Accepted',
+                label: 'Applied / Accepted',
                 data: [totalApplied, totalAccepted],
                 backgroundColor: ['#f1c40f', '#2ecc71']
             }]
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
         data: {
             labels: ['Total Accepted', 'Total Rejected'],
             datasets: [{
-                label: 'Accepted vs Rejected',
+                label: 'Accepted / Rejected',
                 data: [totalAccepted, totalRejected],
                 backgroundColor: ['#2ecc71', '#e74c3c']
             }]

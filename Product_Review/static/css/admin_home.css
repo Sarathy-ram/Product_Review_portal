@@ -4,6 +4,7 @@ body {
    padding: 0;
    background-size: cover;
    background-repeat: no-repeat; 
+   background-color: rgb(206, 209, 209);
    background-position: center; 
    height: 100vh; 
    overflow-x: hidden;
@@ -64,7 +65,7 @@ body {
    top: 20px;
    left: 15px;
    font-size: 20px;
-   background-color: #2980b9;
+   background-color: #031018;
    color: white;
    border: none;
    cursor: pointer;
@@ -189,10 +190,57 @@ canvas {
 }
 
 /* Modern typography and colors */
-body {
-   font-family: 'Roboto', sans-serif;
-   background-color: #f0f2f5; /* Light gray background for a clean look */
-   color: #333; /* Consistent text color */
+
+
+.submission-section {
+   margin-top: 40px;
+}
+
+.submission-table {
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 20px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect for the table */
+   border-radius: 8px; /* Optional: rounded corners */
+   overflow: hidden; /* Prevent shadow from being cut off at corners */
+}
+
+.submission-table th, .submission-table td {
+   padding: 12px;
+   text-align: left;
+   border-bottom: 1px solid #ddd; /* Light border between rows */
+}
+
+.submission-table th {
+   background-color: #292b2c;
+   color: white;
+   text-transform: uppercase; /* Optional: capitalize header text */
+   font-weight: bold;
+}
+
+.submission-table tr:nth-child(even) {
+   background-color: #f9f9f9;
+}
+
+.submission-table tr:hover {
+   background-color: #f1f1f1;
+}
+
+.submission-table td {
+   transition: background-color 0.3s ease; /* Smooth background transition on hover */
+}
+
+.submission-table tr:hover td {
+   background-color: #e9e9e9; /* Highlight row on hover */
+}
+
+.submission-table th, .submission-table td {
+   border-right: 1px solid #ddd; /* Add subtle borders to the right of cells */
+}
+
+.submission-table td:last-child,
+.submission-table th:last-child {
+   border-right: none; /* Remove the right border on the last column */
 }
 
 

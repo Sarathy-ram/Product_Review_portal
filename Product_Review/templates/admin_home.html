@@ -19,15 +19,15 @@
     <div id="main-content" class="content">
     <button class="toggle-btn" id="toggle-btn">&#9654</button>
     <div class="container">
-        <h2>Admin Dashboard - Analytics</h2>
+        <h2> Dashboard - Analytics</h2>
         
         <div class="graph-section">
-            <h3>Total Applied vs Accepted</h3>
+            <h3>Total Applied /Accepted</h3>
             <canvas id="appliedAcceptedChart"></canvas>
         </div>
 
         <div class="graph-section">
-            <h3>Total Accepted vs Rejected</h3>
+            <h3>Total Accepted/Rejected</h3>
             <canvas id="acceptedRejectedChart"></canvas>
         </div>
 
@@ -36,6 +36,31 @@
             <canvas id="pendingChart"></canvas>
         </div>
     </div>
+    
+    <div class="submission-section">
+        <h3>Recent Product Submissions</h3>
+        <table class="submission-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Roll No</th>
+                    <th>Product Title</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for submission in submissions %}
+                    <tr>
+                        <td>{{ submission.name }}</td>
+                        <td>{{ submission.roll_no }}</td>
+                        <td>{{ submission.Project_Title }}</td>
+                        <td>{{ submission.project_status }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
     </div>
    
     <script type="text/javascript">
