@@ -1,8 +1,7 @@
 body {
-    font-family: 'Roboto', sans-serif; 
+   font-family: 'Roboto', sans-serif; 
    margin: 0;
    padding: 0;
-    background-image: url('../images/imagecopy.jpg '); 
    background-size: cover;
    background-repeat: no-repeat; 
    background-position: center; 
@@ -10,17 +9,16 @@ body {
    overflow-x: hidden;
    position: relative; 
 }
-/* Centered Background Image */
-.centered-image {
+/* .centered-image {
    position: fixed;
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
    width: 50%;
    height: auto;
-   opacity: 0.05; /* Lighter opacity for subtle background */
+   opacity: 0.05; 
    z-index: -1;
-}
+} */
 
 /* Sidebar */
 #sidebar {
@@ -118,39 +116,6 @@ body {
    color: #2980b9;
 }
 
-/* Recent Activities */
-.recent-activities {
-   margin-top: 20px;
-}
-
-.recent-activities h2 {
-   margin-bottom: 20px;
-   font-size: 1.5em;
-   color: #34495e;
-   border-bottom: 2px solid #2980b9;
-   padding-bottom: 10px;
-}
-
-.recent-activities ul {
-   list-style: none;
-   padding: 0;
-   margin: 0;
-}
-
-.recent-activities ul li {
-   background-color: #ffffff;
-   padding: 15px;
-   margin-bottom: 15px;
-   border-radius: 8px;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-   font-size: 14px;
-   color: #7f8c8d;
-   transition: box-shadow 0.3s ease;
-}
-
-.recent-activities ul li:hover {
-   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
 /* Footer */
 footer {
    position: fixed;
@@ -162,85 +127,72 @@ footer {
    color: #ecf0f1;
    font-size: 12px;
 }
-.admin-dashboard {
-   max-width: 1200px;
-   margin: 0 auto;
+/* Container */
+.container {
+   width: 80%; /* Keep the container width flexible for better alignment */
+   margin: 0 auto; /* Center the container */
    padding: 20px;
-}
-
-h3 {
-   color: #333;
-   margin-bottom: 10px;
-}
-
-p {
-   color: #555;
-}
-
-.btn {
-   background-color: #007bff;
-   color: white;
-   padding: 10px 20px;
-   text-align: center;
-   text-decoration: none;
-   border-radius: 5px;
-   margin-top: 10px;
-   display: inline-block;
-}
-
-.btn:hover {
-   background-color: #0056b3;
-}
-
-/* System Overview Section */
-.stats-section {
-   display: flex;
-   gap: 20px;
+   display: flex; /* Flexbox to align graph sections in a row */
+   flex-wrap: wrap; /* Allows the graphs to wrap on smaller screens */
    justify-content: space-between;
-   margin-bottom: 40px;
+   transition: transform 0.3s ease; /* Distributes space evenly between the graphs */
+}
+.container.shifted {
+   transform: translateX(250px); /* Move the content to the right by the sidebar width */
 }
 
-.stat-card {
-   background-color: #fff;
-   border-radius: 10px;
-   padding: 20px;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Headings */
+h2, h3 {
    text-align: center;
-   width: 22%;
+   font-family: 'Roboto', sans-serif; /* Modern font choice */
+   color: #333; /* Neutral modern color */
+   margin-bottom: 20px;
+   width: 100%; /* Ensure headings span the full container width */
 }
 
-.stat-card h3 {
-   font-size: 1.2em;
-   margin-bottom: 10px;
-}
-
-.stat-card p {
-   font-size: 2em;
-   font-weight: bold;
-   color: #007bff;
-}
-
-/* Management sections */
-.user-management, .project-management, .reports-section {
-   margin-bottom: 40px;
-}
-
-/* Notifications Section */
-.notifications {
-   background-color: #fff;
-   border-radius: 10px;
-   padding: 20px;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.notifications ul {
-   list-style-type: none;
-   padding: 0;
-}
-
-.notifications li {
-   background-color: #f9f9f9;
+/* Graph Section */
+.graph-section {
+   flex: 0 1 25%; /* Flex-basis of 30% to fit 3 graphs in a row */
+   margin: 1.5%; /* Slightly larger margin for spacing between graphs */
+   background-color: #f9f9f9; /* Light background for a cleaner look */
+   border-radius: 12px; /* Rounded corners for modern styling */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a raised effect */
    padding: 10px;
-   margin-bottom: 10px;
-   border-radius: 5px;
+   transition: transform 0.3s ease; /* Smooth transition for hover effect */
+   text-align: center;
 }
+
+/* Hover effect for modern interaction */
+.graph-section:hover {
+   transform: translateY(-10px); /* Slight lift effect on hover */
+}
+
+/* Canvas (Graphs) */
+canvas {
+   width: 100% !important; /* Ensure canvas takes full width of graph section */
+   height: auto !important; /* Set height to auto for responsiveness */
+   max-height: 250px; /* Set a max-height for consistency */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+   .graph-section {
+       flex: 0 1 45%; /* Adjust width for tablets and medium screens */
+   }
+}
+
+@media (max-width: 768px) {
+   .graph-section {
+       flex: 0 1 100%; /* Stack graphs vertically on small screens */
+       margin: 10px 0; /* Adjust margin for better vertical spacing */
+   }
+}
+
+/* Modern typography and colors */
+body {
+   font-family: 'Roboto', sans-serif;
+   background-color: #f0f2f5; /* Light gray background for a clean look */
+   color: #333; /* Consistent text color */
+}
+
+

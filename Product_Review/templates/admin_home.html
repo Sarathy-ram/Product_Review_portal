@@ -4,13 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="{% static 'css/admin_home.css' %}">
+    <title>Admin Analytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{% static 'css/admin_home.css' %}">   
 </head>
 <body>
-    <!-- Background Image -->
-
-    <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
         <h2>BIT Faculty Panel</h2>
         <h2>Resources</h2>
@@ -18,13 +16,34 @@
         <a href="{% url 'product_details' %}">Student Product Details &#9654;</a>
         <a href="{% url 'product_update' %}">Student Product Update &#9654;</a>
     </div>
-    <!-- Footer -->
+    <div id="main-content" class="content">
     <button class="toggle-btn" id="toggle-btn">&#9654</button>
-    
-    <footer>
-        <p>Sarathy Ram | Bannari Amman Institute Of Technology | Copyrights &copy; 2024</p>
-    </footer>
+    <div class="container">
+        <h2>Admin Dashboard - Analytics</h2>
+        
+        <div class="graph-section">
+            <h3>Total Applied vs Accepted</h3>
+            <canvas id="appliedAcceptedChart"></canvas>
+        </div>
 
-    <script src="{% static 'js/admin_home.js' %}"></script>
+        <div class="graph-section">
+            <h3>Total Accepted vs Rejected</h3>
+            <canvas id="acceptedRejectedChart"></canvas>
+        </div>
+
+        <div class="graph-section">
+            <h3>Total Pending</h3>
+            <canvas id="pendingChart"></canvas>
+        </div>
+    </div>
+    </div>
+   
+    <script type="text/javascript">
+        var totalApplied = {{ total_applied }};
+        var totalAccepted = {{ total_accepted }};
+        var totalRejected = {{ total_rejected }};
+        var totalPending = {{ total_pending }};
+    </script>
+    <script src="{% static 'js/admin_home.js'%}"></script>
 </body>
 </html>
