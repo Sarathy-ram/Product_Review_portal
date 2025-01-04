@@ -6,8 +6,8 @@ from django.shortcuts import render, redirect
 from .forms import ProductRegisterForm
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from .forms import ProductRegisterForm
+from django.shortcuts import render, get_object_or_404, redirect
+from .forms import ProductRegisterForm ,ProductUpdateForm
 from .models import ProductRegister
 
 
@@ -40,7 +40,7 @@ def admin_home(request):
     total_accepted = ProductRegister.objects.filter(project_status='Approved').count()
     total_rejected = ProductRegister.objects.filter(project_status='Rejected').count()
     total_pending = ProductRegister.objects.filter(project_status='Pending').count()
-    submissions = ProductRegister.objects.all()[:5]
+    submissions = ProductRegister.objects.all()[5:]
     context = {
         'username': request.user.username,
         'total_applied': total_applied or 'None',
@@ -97,13 +97,25 @@ def product_details(request):
 @login_required
 def product_update(request):
     if request.method == 'POST':
-        form = ProductRegisterForm(request.POST, request.FILES)
+        # Retrieve the product record based on the team lead's name
+        name = request.POST.get('name')  # Get team lead name from the form
+        if name:
+            product = get_object_or_404(ProductRegister, name=name)
+        else:
+            messages.error(request, 'Team Lead Name is required.')
+            return render(request, 'product_update.html', {'form': ProductUpdateForm()})
+
+        form = ProductUpdateForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
-            form.save()  # Save to the database
-            messages.success(request, 'The Product Registration Is Successful')
-            return redirect('home')  # Redirect to home or another page after successful submission
+            form.save()
+            messages.success(request, 'Product details updated successfully!')
+            return redirect('home')  # Redirect after successful update
+        else:
+            # If the form is invalid, log the form errors for debugging
+            print(form.errors)  # Check the console for form errors
+            messages.error(request, 'There was an error updating the product.')
     else:
-        form = ProductRegisterForm()
+        form = ProductUpdateForm()
 
     return render(request, 'product_update.html', {'form': form})
 

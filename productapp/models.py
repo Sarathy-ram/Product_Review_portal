@@ -9,6 +9,7 @@ class ProductRegister(models.Model):
     project_status = models.CharField(max_length=50,default='Pending')
     abstract = models.TextField(max_length=500)
     bom_submission = models.FileField(upload_to='media/')
+    approval_form = models.FileField(upload_to='media/')
     allocated_mentor = models.CharField(max_length=100, blank=True, null=True) 
     member_1 = models.CharField(max_length=100, blank=True, null=True)
     member_2 = models.CharField(max_length=100, blank=True, null=True)
