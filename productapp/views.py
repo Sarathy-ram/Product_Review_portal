@@ -173,35 +173,20 @@ from django.shortcuts import render
 from .models import ProductRegister
 
 def mentor_assignment_dashboard(request):
-    # Get all students who don't have an allocated mentor yet
     students = ProductRegister.objects.filter(allocated_mentor__isnull=True)
 
-    # Get the 'Mentors' group
+    # Fetch all users in the 'Mentors' group
     mentors_group = Group.objects.get(name='Mentors')
-    mentors = User.objects.filter(groups__in=Group.objects.filter(name='Mentors'))
-    print(mentors)
+    mentors = mentors_group.user_set.all()
 
-
-    # Get all users who are part of the 'Mentors' group
-    # mentors = User.objects.filter(groups=mentors_group)
-
-    if request.method == 'POST':
-        # Get selected student and mentor from the form
-        student_id = request.POST.get('student')
+    if request.method == "POST":
+        selected_student = request.POST.get('student')
         selected_mentor = request.POST.get('mentor')
+        
+        # Update the selected student's allocated_mentor field
+        ProductRegister.objects.filter(roll_no=selected_student).update(allocated_mentor=selected_mentor)
 
-        # Assign the selected mentor to the selected student
-        student = ProductRegister.objects.get(id=student_id)
-        student.allocated_mentor = selected_mentor
-        student.save()
-
-        # Redirect or show success message
-        return redirect('mentor_assignment_dashboard')  # Adjust the redirect URL accordingly
-
-    # Pass the students and mentors to the template
-    context = {
+    return render(request, 'mentor_assignment_dashboard.html', {
         'students': students,
-        'mentors': mentors,
-    }
-
-    return render(request, 'mentor_assignment_dashboard.html', context)
+        'mentors': mentors
+    })
