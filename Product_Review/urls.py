@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from productapp.views import login_view, home_view,admin_home,approve_product,problem_statement_approval,product_register, allocate_mentor, product_details, product_update, about
+from productapp.views import login_view, home_view,admin_home,approve_product,problem_statement_approval,product_register, allocate_mentor, mentor_assignment_dashboard,product_details, product_update, about
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
@@ -14,7 +14,7 @@ urlpatterns = [
     path('product_register/', product_register, name='product_register'),  # Product registration page
     path('product_details/', product_details, name='product_details'),  # Product details page
     path('product_update/', product_update, name='product_update'),  # Product update page
-    
+    path('mentor_assignment_dashboard/',mentor_assignment_dashboard,name='mentor_assignment_dashboard'),
     path('about/', about, name='about'),  # About page
       # Logout
     path('admin-home/', admin_home, name='admin_home'),

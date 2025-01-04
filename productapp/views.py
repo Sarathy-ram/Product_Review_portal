@@ -160,3 +160,48 @@ def approve_product(request, product_id):
             return JsonResponse({'success': False, 'error': 'Product not found'})
 
    return JsonResponse({'success': False, 'error': 'Invalid request method'})
+# @login_required
+# def mentor_assignment_dashboard(request):
+#     return render(request,'mentor_assignment_dashboard.html')
+
+from django.contrib.auth.models import User, Group
+from django.shortcuts import render, redirect
+from .models import ProductRegister  # Assuming your model is imported
+
+from django.contrib.auth.models import User, Group
+from django.shortcuts import render
+from .models import ProductRegister
+
+def mentor_assignment_dashboard(request):
+    # Get all students who don't have an allocated mentor yet
+    students = ProductRegister.objects.filter(allocated_mentor__isnull=True)
+
+    # Get the 'Mentors' group
+    mentors_group = Group.objects.get(name='Mentors')
+    mentors = User.objects.filter(groups__in=Group.objects.filter(name='Mentors'))
+    print(mentors)
+
+
+    # Get all users who are part of the 'Mentors' group
+    # mentors = User.objects.filter(groups=mentors_group)
+
+    if request.method == 'POST':
+        # Get selected student and mentor from the form
+        student_id = request.POST.get('student')
+        selected_mentor = request.POST.get('mentor')
+
+        # Assign the selected mentor to the selected student
+        student = ProductRegister.objects.get(id=student_id)
+        student.allocated_mentor = selected_mentor
+        student.save()
+
+        # Redirect or show success message
+        return redirect('mentor_assignment_dashboard')  # Adjust the redirect URL accordingly
+
+    # Pass the students and mentors to the template
+    context = {
+        'students': students,
+        'mentors': mentors,
+    }
+
+    return render(request, 'mentor_assignment_dashboard.html', context)

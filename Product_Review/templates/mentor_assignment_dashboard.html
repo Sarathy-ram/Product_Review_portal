@@ -1,0 +1,68 @@
+{% load static %}
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Mentor Assignment Dashboard</title>
+     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}"> 
+ </head>
+ <body>
+     <div class="container">
+         <h1>Mentor Assignment Dashboard</h1>
+         
+         <section class="dashboard-overview">
+             <h2>Overview</h2>
+             <p>Total Students: 120</p>
+             <p>Total Mentors: 25</p>
+             <p>Unassigned Students: 15</p>
+         </section>
+ 
+         <section class="assignment-form">
+             <h2>Assign a Mentor</h2>
+             <form method="post">
+                 <div class="form-group">
+                     <label for="student">Select Student:</label>
+                     <select id="student" name="student">
+                         <option value="student1">Ram - 7376222AD1166</option>
+                         <!-- More student options dynamically populated here -->
+                     </select>
+                 </div>
+                 
+                 <div class="form-group">
+                     <label for="mentor">Select Mentor:</label>
+                     <select id="mentor" name="mentor">
+                         <option value="">-- Select Mentor --</option>
+                         <option value="mentor1">Mentor A</option>
+                         <!-- More mentor options dynamically populated here -->
+                     </select>
+                 </div>
+                 
+                 <button type="submit">Assign Mentor</button>
+             </form>
+         </section>
+ 
+         <section class="recent-assignments">
+             <h2>Recent Assignments</h2>
+             <table>
+                 <thead>
+                     <tr>
+                         <th>Student Name</th>
+                         <th>Assigned Mentor</th>
+                         <th>Date</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <tr>
+                         <td>Ram</td>
+                         <td>Mentor A</td>
+                         <td>Jan 2, 2025</td>
+                     </tr>
+                     <!-- More recent assignment rows -->
+                 </tbody>
+             </table>
+         </section>
+     </div>
+ </body>
+ </html>
+ 
