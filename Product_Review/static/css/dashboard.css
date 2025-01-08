@@ -1,163 +1,165 @@
+/* General Reset and Box Sizing */
 * {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
-body {
-    background-color: #f0f4f8;
-    padding: 20px;
-}
-
+/* Container Styling */
 .container {
-    max-width: 1200px;
+    width: 90%;
     margin: 0 auto;
-    background-color: #fff;
     padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
 }
 
+/* Icon Button */
+.icon-btn {
+    background-color: #4a90e2;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.icon-btn:hover {
+    background-color: #4a90e2;
+    color: white;
+}
+
+.icon-btn i {
+    font-size: 18px;
+}
+
+/* Title Styling */
 h1 {
     text-align: center;
-    color: #333;
+    font-size: 36px;
+    color: #2c2a2a;
     margin-bottom: 20px;
 }
 
-section {
-    margin-bottom: 30px;
-}
-
+/* Dashboard Overview Section */
 .dashboard-overview {
-    background-color: #f9fafc;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    width: auto;
+    margin-bottom: 40px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.819); /* Soft shadow for a lifted effect */
 }
 
 .dashboard-overview h2 {
+    font-size: 28px;
+    color: #2c2a2a;
+    margin-bottom: 20px;
+    grid-column: span 2; /* Makes the title span across the columns */
+    text-align: center;
+}
+
+/* Individual Overview Box */
+.dashboard-overview .overview-box {
+    background-color: #f9f9f9;
+    padding: 20px;
+    width: 300px ;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.dashboard-overview .overview-box:hover {
+    transform: scale(1.05); /* Subtle hover scale effect */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-overview .overview-box h3 {
+    font-size: 24px;
+    color: #282a2c;
     margin-bottom: 10px;
-    color: #555;
 }
 
-.dashboard-overview p {
+.dashboard-overview .overview-box p {
     font-size: 18px;
-    margin: 5px 0;
+    color: #100a0a;
 }
 
-.assignment-form {
-    background-color: #f9fafc;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.assignment-form h2 {
-    margin-bottom: 15px;
-    color: #555;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    font-size: 16px;
-    color: #555;
-}
-
-.form-group select {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-}
-
-button {
-    background-color: #333633;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #404240;
-}
-
-.recent-assignments {
-    background-color: #f9fafc;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.recent-assignments h2 {
-    margin-bottom: 15px;
-    color: #555;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
+/* Highlighting Specific Information */
+.dashboard-overview .overview-box .count {
+    font-size: 32px;
+    font-weight: 700;
+    color: #282727;
     margin-top: 10px;
 }
 
-table, th, td {
-    border: 1px solid #040202;
+/* Color Variations for Different Box Types */
+.dashboard-overview .overview-box.students {
+    background-color: #8cb178; /* Light green */
 }
 
-th, td {
-    padding: 10px;
+.dashboard-overview .overview-box.mentors {
+    background-color: #7990a5; /* Light blue */
+}
+
+.dashboard-overview .overview-box.unassigned {
+    background-color: #b38181; /* Light red */
+}
+
+/* Recent Assignments Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 12px;
     text-align: left;
+    border-bottom: 1px solid #444141;
+    
 }
 
-th {
-    background-color: #f2f2f2;
+table th {
+    background-color: #302f2f;
+    
+    color: #f3ebeb;
 }
 
-tr:nth-child(even) {
-    background-color: #f9f9f9;
+table td input {
+    padding: 8px;
+    width: 150px;
+    border-radius: 5px;
+    border: 1px solid #0e0e0e;
 }
-.icon-btn {
-    background-color: #2C3E50; /* Dark, modern background */
-    color: #ECF0F1; /* Light color for icon */
+
+table td span {
+    color: #f44336; /* Red for "Not Allocated" */
+    font-weight: bold;
+}
+
+/* Buttons */
+button {
+    background-color: #4a90e2;
+    color: white;
     border: none;
-    border-radius: 50%; /* Rounded icon button */
-    padding: 15px;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 24px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    transition: background-color 0.3s ease;
 }
 
-/* Adding a subtle hover effect */
-.icon-btn:hover {
-    background-color: #34495E; /* Slightly lighter shade on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
-    transform: translateY(-3px); /* Slight upward movement on hover */
+button:hover {
+    background-color: #357ab7;
 }
 
-.icon-btn:active {
-    transform: translateY(0); /* Reset movement on click */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Slightly reduce shadow on click */
-}
-
-/* Icon styling */
-.icon-btn i {
-    margin: 0;
-    transition: transform 0.3s ease; /* Icon transition for hover effect */
-}
-
-/* Adding rotation animation to the icon on hover */
-.icon-btn:hover i {
-    transform: rotate(20deg); /* Slight rotation on hover */
+/* Responsive Design for Overview */
+@media (max-width: 768px) {
+    .dashboard-overview {
+        grid-template-columns: 1fr;
+    }
 }

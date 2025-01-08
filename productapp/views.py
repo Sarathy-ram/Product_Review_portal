@@ -190,3 +190,25 @@ def mentor_assignment_dashboard(request):
         'students': students,
         'mentors': mentors
     })
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import ProductRegister
+
+def update_mentor_project(request, student_id):
+    student = get_object_or_404(ProductRegister, id=student_id)
+    mentors_group = Group.objects.get(name='Mentors')
+    available_mentors = list(mentors_group.user_set.all())  # Fetch list of mentors
+
+    if request.method == 'POST':
+        # Assign a random mentor if allocated_mentor is None or empty
+        if not student.allocated_mentor or student.allocated_mentor == 'Not Allocated':
+            if available_mentors:
+                random_mentor = random.choice(available_mentors)
+                student.allocated_mentor = random_mentor.username 
+
+    
+        student.project_title = request.POST.get(' Project_Title')
+        student.save()
+
+        return redirect('mentor_assignment_dashboard')  # Adjust this to your actual redirect page
+
+    return render(request, 'mentor_assignment_dashboard.html')

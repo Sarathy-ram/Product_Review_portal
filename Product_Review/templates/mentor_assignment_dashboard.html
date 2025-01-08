@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,66 +17,69 @@
         </a>
     </div>
     <div class="container">
-        <h1>Mentor Assignment Dashboard</h1>
+        <h1>Mentor Allocation Dashboard</h1>
 
+        <!-- Dashboard Overview Section -->
         <section class="dashboard-overview">
-            <h2>Overview</h2>
-            <p>Total Students: {{ students.count }}</p>
-            <p>Total Mentors: {{ mentors.count }}</p>
-            <p>Unassigned Students: {{ students.count }}</p>
+             <!-- <h2>Overview</h2>  -->
+            <div class="overview-box students">
+                <h3>Total Students</h3>
+                <p>Total Students</p>
+                <div class="count">{{ students.count }}</div>
+            </div>
+            <div class="overview-box mentors">
+               <div class="icon">📊</div>
+                   <div class="data">
+                  <h3>Total Mentors</h3>
+                <p>Total Mentors</p>
+                <div class="count">{{ mentors.count }}</div>
+               </div>
+            </div>
+            <div class="overview-box unassigned">
+                <h3>Unassigned Students</h3>
+                <p>Unassigned Students</p>
+                <div class="count">{{ students.count }}</div>
+            </div>
         </section>
 
-        <section class="assignment-form">
-            <h2>Assign a Mentor</h2>
-            <form method="post">
-                {% csrf_token %}
-                
-                <div class="form-group">
-                    <label for="student">Select Student:</label>
-                    <select id="student" name="student" required>
-                        <option value="">-- Select Student --</option>
-                        {% for student in students %}
-                            <option value="{{ student.roll_no }}">{{ student.name }} - {{ student.roll_no }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+        <!-- Recent Assignments Section -->
+        <h2>Mentors Needs To be Allocated</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Assigned Mentor</th>
+                    <th>Project Title</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                    <form method="POST" action="{% url 'update_mentor_project' student.id %}">
+                        {% csrf_token %}
+                        <tr>
+                            <td>{{ student.name }}</td>
 
-                <div class="dropdown">
-                    <label for="mentor">Select Mentor:</label>
-                    <select name="mentor" id="mentor" required>
-                        <option value="">-- Select Mentor --</option>
-                        {% for mentor in mentors %}
-                            <option value="{{ mentor.username }}">{{ mentor.username }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                
-                <button type="submit">Assign Mentor</button>
-            </form>
-        </section>
+                            <!-- If mentor is assigned, show input field with value -->
+                            <td>
+                                {% if student.allocated_mentor %}
+                                    <input type="text" name="allocated_mentor" value="{{ student.allocated_mentor }}">
+                                {% else %}
+                                    <!-- If no mentor, display "Not Allocated" as text -->
+                                    <span>Not Allocated</span>
+                                {% endif %}
+                            </td>
 
-        <section class="recent-assignments">
-            <h2>Recent Assignments</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Student Name</th>
-                        <th>Assigned Mentor</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for student in students %}
-                         <tr>
-                             <td>{{ student.name }}</td>
-                             <td>{{ student.allocated_mentor }}</td>
-                             
-                         </tr>
-                    {% endfor %}
-
-                </tbody>
-            </table>
-        </section>
+                            <!-- Project Title remains an input field -->
+                            <td>{{ student.Project_Title }}</td>
+                            <td>
+                                <button type="submit">Assign/Update</button>
+                            </td>
+                        </tr>
+                    </form>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
