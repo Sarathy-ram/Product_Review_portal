@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const mainContent = document.getElementById("main-content");
     
  
-    let isSidebarVisible = false;
+    let isSidebarVisible = true;
 
     // Set initial aria-expanded attribute for accessibility
     toggleBtn.addEventListener("click", function() {
@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", function() {
     
 
     // Initial state: sidebar is hidden
-    sidebar.style.width = "0";
-    mainContent.style.marginLeft = "0";
+    sidebar.style.width = "250px";
+    mainContent.style.marginLeft = "250px";
     toggleBtn.innerHTML = "&#9654;";  // Right arrow
 
     // ==================== CHARTS ==================== //

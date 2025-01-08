@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const sidebar = document.getElementById("sidebar");
     const mainContent = document.getElementById("main-content");
 
-    let isSidebarVisible = false;
+    let isSidebarVisible = true;
 
     toggleBtn.addEventListener("click", function() {
         if (isSidebarVisible) {
@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Initial state
-    sidebar.style.width = "0";
-    mainContent.style.marginLeft = "0";
+    sidebar.style.width = "200px";
+    mainContent.style.marginLeft = "200px";
     toggleBtn.innerHTML = "&#9654;";  // Right arrow
 });
 function toggleSidebar() {
