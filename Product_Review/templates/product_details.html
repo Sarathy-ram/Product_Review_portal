@@ -31,10 +31,10 @@
                 <a href="{{ product.bom_submission.url }}" target="_blank" class="btn">View BOM</a>
                 
                 <!-- Allocate Mentor Button -->
-                <button class="btn mentor-btn" onclick="allocateMentor(this)">Allocate Mentor</button>
+                <!-- <button class="btn mentor-btn" onclick="allocateMentor(this)">Allocate Mentor</button>
                 <p class="mentor-name {% if not product.allocated_mentor %}hidden{% endif %}">
                     {{ product.allocated_mentor }}
-                </p>
+                </p> -->
 
                 <span class="status {{ product.status }}">{{ product.status|title }}</span>
             </div>

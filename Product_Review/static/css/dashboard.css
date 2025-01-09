@@ -97,43 +97,52 @@ h1 {
 
 /* Color Variations for Different Box Types */
 .dashboard-overview .overview-box.students {
-    background-color: #8cb178; /* Light green */
+    background-color: #bfc8bb; /* Light green */
 }
 
 .dashboard-overview .overview-box.mentors {
-    background-color: #7990a5; /* Light blue */
+    background-color: #10101061; /* Light blue */
 }
 
 .dashboard-overview .overview-box.unassigned {
-    background-color: #b38181; /* Light red */
+    background-color: #b48383; /* Light red */
 }
 
 /* Recent Assignments Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    border-radius: 8 px;
+    text-align: left;
+    border: 1px solid #444141; /* Adds an outer border to the table */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the table */
     overflow: hidden;
 }
 
 table th, table td {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #444141;
-    
+    /* border: 1px solid #444141;*/
+    border-bottom: 1px solid #ccc;
 }
 
 table th {
     background-color: #302f2f;
-    
     color: #f3ebeb;
+    border-top: none; /* Removes unnecessary border on top */
+    border-right: none;
+}
+
+table td {
+    border-right: none; /* No side borders */
 }
 
 table td input {
     padding: 8px;
     width: 150px;
-    border-radius: 5px;
+    border-radius: 8px;
     border: 1px solid #0e0e0e;
 }
 
@@ -141,6 +150,22 @@ table td span {
     color: #f44336; /* Red for "Not Allocated" */
     font-weight: bold;
 }
+
+/* Optional: alternating row background color */
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Table row hover effect */
+table tr:hover {
+    background-color: #f1f1f1; /* Light background on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow on hover */
+}
+
 
 /* Buttons */
 button {
